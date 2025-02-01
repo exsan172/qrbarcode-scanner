@@ -3,9 +3,10 @@ import { ToastAndroid, useColorScheme, View, Text, TouchableOpacity, Linking } f
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Camera, useCameraDevice, useCodeScanner } from "react-native-vision-camera";
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { useFocusEffect } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import Components from "@/components";
 import * as Clipboard from 'expo-clipboard';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Home = () => {
     const colorScheme = useColorScheme()
@@ -115,11 +116,20 @@ const Home = () => {
                                         }
                                     </View>
                                 </View>
-                                <Components.Button
-                                    label="Mulai Scan"
-                                    onPress={() => setActiveCamera(true)}
-                                    icon={<AntDesign name="scan1" size={24} color={"white"} className="mr-2"/>}
-                                />
+                                <View>
+                                    <Components.Button
+                                        label="Mulai Scan"
+                                        onPress={() => setActiveCamera(true)}
+                                        icon={<AntDesign name="scan1" size={24} color={"white"} className="mr-2"/>}
+                                    />
+                                    <View className="mt-3">
+                                        <Components.Button
+                                            label="Buat QR | Barcode"
+                                            onPress={() => router.push("/generator")}
+                                            icon={<Ionicons name="create-outline" size={24} color="white" className="mr-2" />}
+                                        />
+                                    </View>
+                                </View>
                             </View>
                         </View>
                 }
